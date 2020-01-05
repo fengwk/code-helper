@@ -44,7 +44,7 @@ public class GenericUtils {
                 return doFindNearestVarType(srcClass, targetClass, i).type;
             }
         }
-        return targetVar; 
+        throw new IllegalArgumentException("The " + targetClass + " is not contains " + targetVar + "."); 
     }
     
     /**
