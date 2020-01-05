@@ -49,6 +49,8 @@ public class GenConvertMethodHandler extends GenMethodTemplate {
             return name;
         } else if (i == 1) {
             return Character.toLowerCase(name.charAt(0)) + name.substring(1);
+        } else if (i == cs.length) {
+            return name.toLowerCase();
         } else {
             return name.substring(0, i - 1).toLowerCase() + name.substring(i - 1);
         }

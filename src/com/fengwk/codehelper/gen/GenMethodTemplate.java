@@ -273,7 +273,7 @@ public abstract class GenMethodTemplate {
                         MethodMateData methodMateData = null;
                         try {
                             methodMateData = parser.findMethod(textMethod.method, textMethod.params);
-                            if (methodMateData.getReturnType() == null) {
+                            if (methodMateData == null || methodMateData.getReturnType() == null) {
                                 continue;
                             }
                         } catch (JavaModelException e) {
@@ -290,6 +290,7 @@ public abstract class GenMethodTemplate {
                 MessageDialog.openError(s, "Code Helper", "Error: " + e.getMessage() + ".");
                 return;
             } catch (Throwable e) {
+                e.printStackTrace();
                 MessageDialog.openError(s, "Code Helper", "Please select the correct convert method first.\nError: " + e.getMessage() + ".");
                 return;
             }

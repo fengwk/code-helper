@@ -1,11 +1,11 @@
 package com.fengwk.codehelper.gen;
 
 import java.beans.IntrospectionException;
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 
 import com.fengwk.codehelper.util.BeanUtils;
+import com.fengwk.codehelper.util.BeanUtils.MethodDesc;
+import com.fengwk.codehelper.util.BeanUtils.PropertyDesc;
 import com.fengwk.codehelper.util.TypeUtils;
 
 /**
@@ -34,12 +34,12 @@ public class ConvertMethodGenerator {
         sb.append("            return null;\n");
         sb.append("        }\n");
         sb.append("        ").append(to.getSimpleName()).append(' ').append(toName).append(" = new ").append(to.getSimpleName()).append("();\n");
-        PropertyDescriptor[] toPds = BeanUtils.getPropertyDescriptors(to);
+        PropertyDesc[] toPds = BeanUtils.getPropertyDescriptors(to);
         Arrays.sort(toPds, (x1, x2) -> x1.getName().compareTo(x2.getName()));
-        for (PropertyDescriptor toPd : toPds) {
-            Method targetWriteMethod = toPd.getWriteMethod();
+        for (PropertyDesc toPd : toPds) {
+            MethodDesc targetWriteMethod = toPd.getWriteMethod();
             if (targetWriteMethod != null) {
-                PropertyDescriptor fromPd = BeanUtils.getPropertyDescriptor(from, toPd.getName());
+                PropertyDesc fromPd = BeanUtils.getPropertyDescriptor(from, toPd.getName());
                 if (fromPd != null && fromPd.getReadMethod() != null && TypeUtils.isAssignable(targetWriteMethod.getGenericParameterTypes()[0], fromPd.getReadMethod().getGenericReturnType())) {
                     sb.append("        ").append(toName).append('.').append(toPd.getWriteMethod().getName()).append('(').append(fromName).append('.').append(fromPd.getReadMethod().getName()).append("());\n");
                 } else {
