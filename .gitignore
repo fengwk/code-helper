@@ -1,0 +1,35 @@
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+site/
+
+# Gradle
+.gradle/
+build/
+
+# jRebel
+rebel.xml
+
+# Shade plugin
+dependency-reduced-pom.xml
+
+*.log
+
+**/pom.xml.releaseBackup
+**/release.properties
