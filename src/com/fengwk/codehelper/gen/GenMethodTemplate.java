@@ -234,7 +234,7 @@ public abstract class GenMethodTemplate {
         return selectedMethods.stream().filter(x -> x != null).collect(Collectors.toList());
     }
     
-    private ICompilationUnit getICompilationUnit() {
+    static ICompilationUnit getICompilationUnit() {
         IWorkbenchPart iWorkbenchPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService().getActivePart();
         if (iWorkbenchPart instanceof EditorPart) {
             IEditorInput iEditorInput = ((EditorPart) iWorkbenchPart).getEditorInput();
@@ -249,7 +249,7 @@ public abstract class GenMethodTemplate {
         return null;
     }
     
-    private ITextSelection getITextSelection() {
+    static ITextSelection getITextSelection() {
         ISelection iSelection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection();
         if (iSelection instanceof ITextSelection) {
             return (ITextSelection) iSelection;

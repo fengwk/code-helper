@@ -5,12 +5,14 @@
     <elements xsi:type="commands:Command" xmi:id="_UCYfwIrOEeW7h_qdP9N9fb" elementId="com.fengwk.codehelper.gen.GenCoverMethodHandler" commandName="Gen Cover Method"/>
     <elements xsi:type="commands:Command" xmi:id="_UCYfwIrOEeW7h_qdP9N9fc" elementId="com.fengwk.codehelper.gen.GenCoverMethodHandlerIfFromNotNull" commandName="Gen Cover Method (if from not null)"/>
     <elements xsi:type="commands:Command" xmi:id="_UCYfwIrOEeW7h_qdP9N9fd" elementId="com.fengwk.codehelper.gen.GenCoverMethodHandlerIfToIsNull" commandName="Gen Cover Method (if to is null)"/>
+    <elements xsi:type="commands:Command" xmi:id="_UCYfwIrOEeW7h_qdP9N9fe" elementId="com.fengwk.codehelper.gen.GenAutoSetHandler" commandName="Gen Auto Set"/>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_fW12kIrOEeW7h_qdP9N9fw" featurename="handlers" parentElementId="xpath:/">
     <elements xsi:type="commands:Handler" xmi:id="_k2L0IIrOEeW7h_qdP9N9fa" elementId="org.eclipse.pde.ui.templates.handler.0" contributionURI="bundleclass://code-helper/com.fengwk.codehelper.gen.GenConvertMethodHandler" command="_UCYfwIrOEeW7h_qdP9N9fa"/>
     <elements xsi:type="commands:Handler" xmi:id="_k2L0IIrOEeW7h_qdP9N9fb" elementId="org.eclipse.pde.ui.templates.handler.1" contributionURI="bundleclass://code-helper/com.fengwk.codehelper.gen.GenCoverMethodHandler" command="_UCYfwIrOEeW7h_qdP9N9fb"/>
     <elements xsi:type="commands:Handler" xmi:id="_k2L0IIrOEeW7h_qdP9N9fc" elementId="org.eclipse.pde.ui.templates.handler.2" contributionURI="bundleclass://code-helper/com.fengwk.codehelper.gen.GenCoverMethodHandlerIfFromNotNull" command="_UCYfwIrOEeW7h_qdP9N9fc"/>
     <elements xsi:type="commands:Handler" xmi:id="_k2L0IIrOEeW7h_qdP9N9fd" elementId="org.eclipse.pde.ui.templates.handler.3" contributionURI="bundleclass://code-helper/com.fengwk.codehelper.gen.GenCoverMethodHandlerIfToIsNull" command="_UCYfwIrOEeW7h_qdP9N9fd"/>
+    <elements xsi:type="commands:Handler" xmi:id="_k2L0IIrOEeW7h_qdP9N9fe" elementId="org.eclipse.pde.ui.templates.handler.4" contributionURI="bundleclass://code-helper/com.fengwk.codehelper.gen.GenAutoSetHandler" command="_UCYfwIrOEeW7h_qdP9N9fe"/>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_pVgfIIrOEeW7h_qdP9N9fw" featurename="menuContributions" parentElementId="xpath:/">
     <!-- <elements xsi:type="menu:MenuContribution" xmi:id="_tSwX0IrOEeW7h_qdP9N9fw" elementId="org.eclipse.pde.ui.templates.menucontribution.0" positionInParent="after=additions" parentId="org.eclipse.ui.main.menu">
@@ -27,6 +29,7 @@
         <children xsi:type="menu:HandledMenuItem" xmi:id="_Dtii0YrPEeW7h_qdP9N9fb" elementId="org.eclipse.pde.ui.templates.handledmenuitem.1" label="" iconURI="platform:/plugin/code-helper/icons/Sample.png" command="_UCYfwIrOEeW7h_qdP9N9fb"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_Dtii0YrPEeW7h_qdP9N9fc" elementId="org.eclipse.pde.ui.templates.handledmenuitem.2" label="" iconURI="platform:/plugin/code-helper/icons/Sample.png" command="_UCYfwIrOEeW7h_qdP9N9fc"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_Dtii0YrPEeW7h_qdP9N9fd" elementId="org.eclipse.pde.ui.templates.handledmenuitem.3" label="" iconURI="platform:/plugin/code-helper/icons/Sample.png" command="_UCYfwIrOEeW7h_qdP9N9fd"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_Dtii0YrPEeW7h_qdP9N9fe" elementId="org.eclipse.pde.ui.templates.handledmenuitem.4" label="" iconURI="platform:/plugin/code-helper/icons/Sample.png" command="_UCYfwIrOEeW7h_qdP9N9fe"/>
       </children>
     </elements>
   </fragments>
