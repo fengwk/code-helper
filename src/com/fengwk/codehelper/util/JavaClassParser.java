@@ -21,7 +21,7 @@ public class JavaClassParser {
     final ClassLoader cl;
     
     final ICompilationUnit javaClass;
-    final List<String> pkgs;
+    final List<List<String>> pkgs;
     final List<List<String>> imports;
     
     public JavaClassParser(ClassLoader cl, ICompilationUnit javaClass) throws JavaModelException {
@@ -29,11 +29,17 @@ public class JavaClassParser {
         this.javaClass = javaClass;
         
         IPackageDeclaration[] pds = javaClass.getPackageDeclarations();
+        List<String> pkg;
         if (pds.length == 0) {
             pkgs = Collections.emptyList();
+            pkg = new ArrayList<>();
         } else {
-            pkgs = splitPkg(pds[0].getElementName());
+        	pkgs = new ArrayList<>();
+        	pkg = new ArrayList<>(splitPkg(pds[0].getElementName()));
+        	pkgs.add(new ArrayList<>(pkg));
         }
+        pkg.add(javaClass.getElementName().replace(".java", ""));
+        pkgs.add(pkg);// add self for inner class
         
         imports = new ArrayList<>();
         IImportDeclaration[] idecs = javaClass.getImports();
@@ -105,9 +111,11 @@ public class JavaClassParser {
             }
         }
         
-        clazz = testAndGetClass(pkgs, typeName);
-        if (clazz != null) {
-            return clazz;
+        for (List<String> pkg : pkgs) {
+        	clazz = testAndGetClass(pkg, typeName);
+            if (clazz != null) {
+                return clazz;
+            }
         }
         
         for (List<String> imporPkgs : imports) {
