@@ -23,7 +23,7 @@ public class GenCoverMethodHandlerIfToIsNull extends GenMethodTemplate {
         String fromName = params.get(0).getName();
         Class<?> toType = params.get(1).getClazz();
         String toName =  GenConvertMethodHandler.getToName(params.get(1).getName(), fromName);
-        CoverMethodGeneratorIfToIsNull gen = new CoverMethodGeneratorIfToIsNull(fromType, fromName, toType, toName);
+        CoverMethodGeneratorIfToIsNull gen = new CoverMethodGeneratorIfToIsNull(new Pojo(fromType), fromName, new Pojo(toType), toName);
         return gen.generate();
     }
     

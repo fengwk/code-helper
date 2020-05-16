@@ -24,7 +24,7 @@ public class GenConvertMethodHandler extends GenMethodTemplate {
         String fromName = params.get(0).getName();
         Class<?> toType = methodMateData.getReturnType();
         String toName = getToName(toType.getSimpleName(), fromName);
-        ConvertMethodGenerator gen = new ConvertMethodGenerator(fromType, fromName, toType, toName);
+        ConvertMethodGenerator gen = new ConvertMethodGenerator(new Pojo(fromType), fromName, new Pojo(toType), toName);
         return gen.generate();
     }
     

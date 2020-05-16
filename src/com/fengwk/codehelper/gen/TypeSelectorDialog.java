@@ -8,7 +8,6 @@ import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.operation.IRunnableContext;
 
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.dialogs.SelectionStatusDialog;
 import org.eclipse.jdt.core.search.IJavaSearchScope;
 
 import org.eclipse.jdt.ui.dialogs.TypeSelectionExtension;

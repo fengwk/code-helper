@@ -1,9 +1,6 @@
 package com.fengwk.codehelper.gen;
 
 import java.beans.IntrospectionException;
-import java.util.Arrays;
-
-import com.fengwk.codehelper.util.BeanUtils;
 import com.fengwk.codehelper.util.BeanUtils.MethodDesc;
 import com.fengwk.codehelper.util.BeanUtils.PropertyDesc;
 import com.fengwk.codehelper.util.TypeUtils;
@@ -16,12 +13,12 @@ import com.fengwk.codehelper.util.TypeUtils;
  */
 public class CoverMethodGenerator {
 
-    final Class<?> from;
+    final Pojo from;
     final String fromName;
-    final Class<?> to;
+    final Pojo to;
     final String toName;
     
-    public CoverMethodGenerator(Class<?> from, String fromName, Class<?> to, String toName) {
+    public CoverMethodGenerator(Pojo from, String fromName, Pojo to, String toName) {
         this.from = from;
         this.fromName = fromName;
         this.to = to;
@@ -33,14 +30,13 @@ public class CoverMethodGenerator {
         sb.append("        if (").append(fromName).append(" == null || ").append(toName).append(" == null) {\n");
         sb.append("            return;\n");
         sb.append("        }\n");
-        PropertyDesc[] toPds = BeanUtils.getPropertyDescriptors(to);
-        Arrays.sort(toPds, (x1, x2) -> x1.getName().compareTo(x2.getName()));
+        PropertyDesc[] toPds = to.propertyDescriptors();
         for (int i = 0; i < toPds.length; i++) {
             PropertyDesc toPd = toPds[i];
             MethodDesc targetReadMethod = toPd.getReadMethod();
             MethodDesc targetWriteMethod = toPd.getWriteMethod();
             if (targetReadMethod != null && targetWriteMethod != null) {
-                PropertyDesc fromPd = BeanUtils.getPropertyDescriptor(from, toPd.getName());
+                PropertyDesc fromPd = from.propertyDescriptor(toPd.getName());
                 if (fromPd != null && fromPd.getReadMethod() != null && TypeUtils.isAssignable(targetWriteMethod.getGenericParameterTypes()[0], fromPd.getReadMethod().getGenericReturnType())) {
                     sb.append("        ").append(toName).append('.').append(toPd.getWriteMethod().getName()).append('(').append(fromName).append('.').append(fromPd.getReadMethod().getName()).append("());");
                 } else {

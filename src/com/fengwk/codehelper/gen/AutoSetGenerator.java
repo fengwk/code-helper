@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.fengwk.codehelper.util.BeanUtils;
 import com.fengwk.codehelper.util.TypeUtils;
 import com.fengwk.codehelper.util.BeanUtils.MethodDesc;
 import com.fengwk.codehelper.util.BeanUtils.PropertyDesc;
@@ -21,17 +20,17 @@ import com.fengwk.codehelper.util.BeanUtils.PropertyDesc;
  */
 public class AutoSetGenerator {
 
-    Class<?> clazz;
+	Pojo pojo;
     
-    public AutoSetGenerator(Class<?> clazz) {
-        this.clazz = clazz;
+    public AutoSetGenerator(Pojo pojo) {
+        this.pojo = pojo;
     }
 
     public String gen() throws IntrospectionException {
         StringBuilder builder = new StringBuilder();
-        String cname = GenConvertMethodHandler.regularize(clazz.getSimpleName());
-        builder.append("        ").append(clazz.getSimpleName()).append(' ').append(cname).append(" = new ").append(clazz.getSimpleName()).append("();\n");
-        PropertyDesc[] pds = BeanUtils.getPropertyDescriptors(clazz);
+        String cname = GenConvertMethodHandler.regularize(pojo.clsName());
+        builder.append("        ").append(pojo.clsName()).append(' ').append(cname).append(" = new ").append(pojo.clsName()).append("();\n");
+        PropertyDesc[] pds = pojo.propertyDescriptors();
         for (int i = 0; i < pds.length; i++) {
             PropertyDesc pd = pds[i];
             MethodDesc wm = pd.getWriteMethod();

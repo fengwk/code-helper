@@ -45,7 +45,7 @@ public class GenAutoSetHandler {
                     }
                 }
                 i++;
-                cu.applyTextEdit(new InsertEdit(i, (r ? "\n" : "") + new AutoSetGenerator(clazz).gen()), null);
+                cu.applyTextEdit(new InsertEdit(i, (r ? "\n" : "") + new AutoSetGenerator(new Pojo(clazz)).gen()), null);
             } catch (JavaModelException | IntrospectionException | IOException | ClassNotFoundException e) {
                 MessageDialog.openError(s, "Code Helper", "Error: " + e.getMessage() + ".");
             }
