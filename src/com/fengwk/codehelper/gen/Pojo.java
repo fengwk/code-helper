@@ -56,6 +56,10 @@ public class Pojo {
         this.allSource = allSource.toString();
     }
     
+    public static void main(String[] args) {
+        System.out.println(Pojo.class.getSimpleName());
+    }
+    
     void tryReadAllSource(Class<?> cls, StringBuilder allSource) {
         Class<?> superCls = cls.getSuperclass();
         if (superCls != null) {
@@ -64,12 +68,31 @@ public class Pojo {
         
         String source = tryReadSource(cls);
         if (source != null) {
-            allSource.append(source.substring(source.indexOf('{'), source.lastIndexOf('}')));
+            String regex = "class[\\s]+" + cls.getSimpleName() + "[\\s]*\\{";
+            Matcher m = Pattern.compile(regex).matcher(source);
+            if (m.find()) {
+                source = source.substring(m.start());
+                int n = 1;// counter
+                int i = 0;
+                for (; n > 0 && i < source.length(); i++) {
+                    if (source.charAt(i) == '{') { 
+                        n++;
+                    } else if (source.charAt(i) == '}') {
+                        n--;
+                    }
+                }
+                source = source.substring(0, i);
+                allSource.append(source);
+            }
         }
     }
     
     String tryReadSource(Class<?> cls) {
+        cls = getTopCls(cls);
         URL url = cls.getResource(cls.getSimpleName() + ".class");
+        if (url == null) {
+            return null;
+        }
         File f = new File(url.getFile().replace("target/classes", "src/main/java").replace(".class", ".java"));
         if (!f.exists()) {
             f = new File(url.getFile().replace("target/test-classes", "src/test/java").replace(".class", ".java"));
@@ -82,6 +105,11 @@ public class Pojo {
             }
         }
         return null;
+    }
+    
+    Class<?> getTopCls(Class<?> cls) {
+        Class<?> dcls = cls.getDeclaringClass();
+        return dcls == null ? cls : getTopCls(dcls);
     }
     
     String readFileToString(File f) throws IOException {
