@@ -3,6 +3,7 @@ package com.fengwk.codehelper.gen;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import javax.inject.Named;
@@ -231,7 +232,7 @@ public abstract class GenMethodTemplate {
         selectedMethods.add(parseInMethodName(source, offset - 1));
         selectedMethods.add(parseInMethodBody(source, offset));
         selectedMethods.add(parseInMethodBody(source, offset - 2));
-        return selectedMethods.stream().filter(x -> x != null).collect(Collectors.toList());
+        return selectedMethods.stream().filter(Objects::nonNull).collect(Collectors.toList());
     }
     
     static ICompilationUnit getICompilationUnit() {
