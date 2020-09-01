@@ -68,7 +68,7 @@ public class Pojo {
         
         String source = tryReadSource(cls);
         if (source != null) {
-            String regex = "class[\\s]+" + cls.getSimpleName() + "[\\s]*\\{";
+            String regex = "class[\\s]+" + cls.getSimpleName() + "[^\\{]*\\{";
             Matcher m = Pattern.compile(regex).matcher(source);
             if (m.find()) {
                 source = source.substring(m.start());
