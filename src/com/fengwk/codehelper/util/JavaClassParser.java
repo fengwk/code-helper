@@ -30,11 +30,10 @@ public class JavaClassParser {
         
         IPackageDeclaration[] pds = javaClass.getPackageDeclarations();
         List<String> pkg;
+        pkgs = new ArrayList<>();
         if (pds.length == 0) {
-            pkgs = Collections.emptyList();
             pkg = new ArrayList<>();
         } else {
-        	pkgs = new ArrayList<>();
         	pkg = new ArrayList<>(splitPkg(pds[0].getElementName()));
         	pkgs.add(new ArrayList<>(pkg));
         }
