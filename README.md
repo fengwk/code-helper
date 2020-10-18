@@ -2,7 +2,7 @@
 Eclipse代码自动生成插件，目前已支持转换、覆盖、填充方法的自动生成。
 
 # 编译和安装
-1. 使用Eclipse Plugin-in project导入编译，或者直接下载已编译的release版本。
+1. 使用Eclipse Plugin-in project导入编译，或者直接下载已编译的[release版本](https://github.com/fengwk/code-helper/releases/tag/v1.0)。
 2. 将编译后的jar包放在Eclipse目录下的plugins文件夹里。
 3. 重启Eclipse，需注意的是重启并不一定能使插件生效，如不生效新建一个工作空间即可。
 
